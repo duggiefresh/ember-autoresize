@@ -1,4 +1,4 @@
-// Last commit: f7b070b (2013-05-31 11:24:15 -0400)
+// Last commit: ed501ec (2013-07-16 17:32:24 -0400)
 
 
 (function() {
@@ -129,6 +129,7 @@ var normalizeMargin = function (margin) {
 
   @method layoutOf
   @for Ember.Metrics
+  @static
   @param element {DOMELement} The element to compute the layout of.
   @return {Object} Layout properties of the element
  */
@@ -226,6 +227,7 @@ function layoutOf(element) {
 
   @method prepareStringMeasurement
   @for Ember.Metrics
+  @static
   @param exampleElement {DOMElement}
     A DOM element to use as a template for measuring a string in.
   @param additionalStyles {Object}
@@ -294,6 +296,7 @@ function prepareStringMeasurement(exampleElement, additionalStyles) {
   setup in `prepareStringMeasurement`.
 
   @for Ember.Metrics
+  @static
   @method teardownStringMeasurement
  */
 function teardownStringMeasurement() {
@@ -305,6 +308,17 @@ function teardownStringMeasurement() {
   }
 };
 
+/**
+  Measures a string given the styles applied
+  when setting up string measurements.
+
+  @for Ember.Metrics
+  @static
+  @method measureString
+  @param string {String} The string to measure
+  @param ignoreEscape {Boolean} Whether the string should be escaped.
+  @return {Object} The layout of the string passed in.
+ */
 function measureString(string, ignoreEscape) {
   var element = metricsCalculationElement;
 
@@ -510,7 +524,7 @@ Ember.AutoResize = Ember.Mixin.create(/** @scope Ember.AutoResize.prototype */{
     var text = this.get('autoResizeText'),
         size;
 
-    if (!Ember.isEmpty(text)) {
+    if (!Ember.isEmpty(text) && !this.get('isDestroying')) {
       // Provide extra styles that will restrict
       // width / height growth
       var styles  = {},
@@ -538,7 +552,7 @@ Ember.AutoResize = Ember.Mixin.create(/** @scope Ember.AutoResize.prototype */{
         styles.whiteSpace = 'pre-wrap';
       }
 
-      Ember.Metrics.prepareStringMeasurement(this.$()[0], styles);
+      Ember.Metrics.prepareStringMeasurement(element, styles);
       size = Ember.Metrics.measureString(text, this.get('ignoreEscape'));
       Ember.Metrics.teardownStringMeasurement();
     } else {
@@ -591,7 +605,7 @@ Ember.AutoResize = Ember.Mixin.create(/** @scope Ember.AutoResize.prototype */{
     this.set('dimensions', dimensions);
 
     if (layoutDidChange) {
-      Ember.run.schedule('render', this, this.dimensionsDidChange);
+      Ember.run.scheduleOnce('render', this, this.dimensionsDidChange);
     }
   }.observes('measuredSize'),
 
@@ -618,6 +632,11 @@ Ember.AutoResize = Ember.Mixin.create(/** @scope Ember.AutoResize.prototype */{
 
 });
 
+
+/**
+  @namespace Ember
+  @class TextField
+ */
 Ember.TextField.reopen(Ember.AutoResize, /** @scope Ember.TextField.prototype */{
 
   /**
@@ -655,6 +674,10 @@ Ember.TextField.reopen(Ember.AutoResize, /** @scope Ember.TextField.prototype */
 
 });
 
+/**
+  @namespace Ember
+  @class TextArea
+ */
 Ember.TextArea.reopen(Ember.AutoResize, /** @scope Ember.TextArea.prototype */{
 
   /**
@@ -686,7 +709,11 @@ Ember.TextArea.reopen(Ember.AutoResize, /** @scope Ember.TextArea.prototype */{
     @type String
    */
   autoResizeText: function () {
-    return this.get('value') + '@';
+    var value = this.get('value');
+    if (Ember.isNone(value)) {
+      value = '';
+    }
+    return value + '@';
   }.property('value')
 
 });
