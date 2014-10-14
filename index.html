@@ -1,70 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Ember AutoResize</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ember Autoresize</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+<meta name="autoresize/config/environment" content="%7B%22modulePrefix%22%3A%22autoresize%22%2C%22environment%22%3A%22production%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%7D%7D">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <link rel="stylesheet" href="stylesheets/autoresize.css">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="assets/vendor-51ab6ebf710b29121d4b586d7a71bc7a.css">
+    <link rel="stylesheet" href="assets/autoresize-bf90364c708a358e2b0d5b4bb5292024.css">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Ember AutoResize</h1>
-        <p>A autoresize mixin for Ember Views</p>
-
-        <p class="view"><a href="https://github.com/paddle8/ember-autoresize">View the Project on GitHub <small>paddle8/ember-autoresize</small></a></p>
-
-        <ul>
-          <li><a href="https://github.com/paddle8/ember-autoresize/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/paddle8/ember-autoresize/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/paddle8/ember-autoresize">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
+    <header>
+      <h4>Ember Autoresize</h4>
+    </header>
+    <hr>
+    <main>
+      <p>An ember-cli addon for autoresizing elements.</p>
       <section>
-        <h1>Ember.AutoResize</h1>
-        <p>A mixin for Ember Views designed to be a drop-in </p>
-
-        <h2>Dependecies</h2>
-
-        <p>You will need to include <a href="http://jquery.com/">jquery</a>, <a href="http://handlebarsjs.com">handlebars</a>,
-          <a href="http://emberjs.com">ember.js</a> and the autoresize mixin.</p>
-
-        <h2>Usage</h2>
-
-        <p>Ember.TextField and Ember.TextArea work out of the box with Ember.AutoResize. Simply add the attribute autoresize to your view to add the magic:</p>
-
-        <div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/x-handlebars"</span> <span class="na">data-template-name=</span><span class="s">"index"</span><span class="nt">&gt;</span>
-            <span class="p">{{</span><span class="nx">view</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">TextArea</span> <span class="nx">autoresize</span><span class="o">=</span><span class="s2">true</span> <span class="nx">value</span><span class="o">=</span><span class="mi">"I resize vertically!"</span> <span class="nx">maxHeight</span><span class="o">=</span><span class="mi">500</span><span class="p">}}</span>
-            <span class="p">{{</span><span class="nx">view</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">TextField</span> <span class="nx">autoresize</span><span class="o">=</span><span class="s2">true</span> <span class="nx">value</span><span class="o">=</span><span class="mi">"I resize horizontally!"</span> <span class="nx">maxWidth</span><span class="o">=</span><span class="mi">500</span><span class="p">}}</span>
-            <span class="nt">&lt;/script&gt;</span>
-        </pre></div>
-        <div id="application">
-        </div>
+        <header>
+          <h5>Installation</h5>
+        </header>
+        <p>
+          <pre class="bash">
+npm install --save-dev ember-autoresize
+ember g ember-autoresize</pre>
+        </p>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/paddle8">paddle8</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    <script src="javascripts/jquery.js"></script>
-    <script src="javascripts/handlebars.js"></script>
-    <script src="javascripts/ember.js"></script>
-    <script src="javascripts/autoresize.js"></script>
-    <script>
-      Ember.Application.create({
-        rootElement: '#application'
-      });
-    </script>
-
-    <script type="text/x-handlebars" data-template-name="index">
-      {{view Ember.TextArea autoresize=true value="I resize vertically!" maxHeight=500}}
-      <br>
-      {{view Ember.TextField autoresize=true value="I resize horizontally!" maxWidth=500}}
-    </script>
+      <section>
+        <header>
+          <h5>Usage</h5>
+        </header>
+        <p>
+          To add autoresizing to an {{input}}, set autoresize to true:
+        </p>
+        <code class="handlebars">
+          {{input type="text" autoresize=true}}
+        </code>
+        <p>
+          You may then specify the maximum width that the input may resize to by setting the maxWidth property.
+        </p>
+      </section>
+      <section id="example">
+        <header>
+          <h5>Example</h5>
+        </header>
+        <pre class="handlebars">
+&lt;label for="pie-name"&gt;Pie Name&lt;/label&gt;
+{{input id="pie-name" value=name autoresize=true maxWidth=200}}&lt;br&gt;&lt;br&gt;
+&lt;label for="pie-recipe"&gt;Recipe&lt;/label&gt;
+{{textarea id="pie-recipe" value=recipe autoresize=true maxHeight=200}}</pre>
+        <div id="app"></div>
+      </section>
+    </main>
+    <script src="assets/vendor-41069e3a6fe8dc581e013339fa3da3b8.js"></script>
+    <script src="assets/autoresize-ef706d8b2473868bedd2fd010ca70fc7.js"></script>
   </body>
 </html>
