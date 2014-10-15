@@ -5,27 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Ember Autoresize</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <base href="/">
-<meta name="autoresize/config/environment" content="%7B%22modulePrefix%22%3A%22autoresize%22%2C%22environment%22%3A%22production%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%7D%7D">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <base href="/ember-autoresize/">
+<meta name="autoresize/config/environment" content="%7B%22modulePrefix%22%3A%22autoresize%22%2C%22environment%22%3A%22production%22%2C%22baseURL%22%3A%22/ember-autoresize%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%7D%2C%22contentSecurityPolicyHeader%22%3A%22Content-Security-Policy-Report-Only%22%2C%22contentSecurityPolicy%22%3A%7B%22default-src%22%3A%22%27none%27%22%2C%22script-src%22%3A%22%27self%27%22%2C%22font-src%22%3A%22%27self%27%22%2C%22connect-src%22%3A%22%27self%27%22%2C%22img-src%22%3A%22%27self%27%22%2C%22style-src%22%3A%22%27self%27%22%7D%7D">
 
-    <link rel="stylesheet" href="ember-autoresize/assets/vendor-51ab6ebf710b29121d4b586d7a71bc7a.css">
-    <link rel="stylesheet" href="ember-autoresize/assets/autoresize-bf90364c708a358e2b0d5b4bb5292024.css">
+    <link rel="stylesheet" href="assets/vendor-55d3ef3635d770d7d6032d8d6264d837.css">
+    <link rel="stylesheet" href="assets/autoresize-4b005077959c7673b9dc07ed29c41d0b.css">
   </head>
   <body>
-    <header>
-      <h4>Ember Autoresize</h4>
-    </header>
-    <hr>
+    <nav>
+      <header>
+        <h4>Ember Autoresize</h4>
+        <p>An ember-cli addon for autoresizing elements.</p>
+      </header>
+    </nav>
     <main>
-      <p>An ember-cli addon for autoresizing elements.</p>
       <section>
         <header>
           <h5>Installation</h5>
         </header>
         <p>
           <pre class="bash">
-npm install --save-dev ember-autoresize
+npm install --save-dev ember-autoresize<br>
 ember g ember-autoresize</pre>
         </p>
       </section>
@@ -48,14 +49,19 @@ ember g ember-autoresize</pre>
           <h5>Example</h5>
         </header>
         <pre class="handlebars">
-&lt;label for="pie-name"&gt;Pie Name&lt;/label&gt;
-{{input id="pie-name" value=name autoresize=true maxWidth=200}}&lt;br&gt;&lt;br&gt;
-&lt;label for="pie-recipe"&gt;Recipe&lt;/label&gt;
+&lt;label for="pie-name"&gt;Pie Name&lt;/label&gt;<br>
+{{input id="pie-name" value=name autoresize=true maxWidth=200}}<br>
+&lt;br&gt;&lt;br&gt;<br>
+&lt;label for="pie-recipe"&gt;Recipe&lt;/label&gt;<br>
 {{textarea id="pie-recipe" value=recipe autoresize=true maxHeight=200}}</pre>
         <div id="app"></div>
       </section>
     </main>
-    <script src="ember-autoresize/assets/vendor-41069e3a6fe8dc581e013339fa3da3b8.js"></script>
-    <script src="ember-autoresize/assets/autoresize-ef706d8b2473868bedd2fd010ca70fc7.js"></script>
+    <br>
+    <footer>
+      <span class="icon-archiv8"></span>
+    </footer>
+    <script src="assets/vendor-41069e3a6fe8dc581e013339fa3da3b8.js"></script>
+    <script src="assets/autoresize-ef706d8b2473868bedd2fd010ca70fc7.js"></script>
   </body>
 </html>
